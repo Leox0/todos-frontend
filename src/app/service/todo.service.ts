@@ -17,4 +17,16 @@ export class TodoService {
   public getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${environment.API_BASE}${TODO_ENDPOINT}`);
   }
+
+  public getTodo(id: string): Observable<Todo> {
+    return this.http.get<Todo>(`${environment.API_BASE}${TODO_ENDPOINT}/${id}`);
+  }
+
+  public addTodo(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(`${environment.API_BASE}${TODO_ENDPOINT}`, todo);
+  }
+
+  public updateTodo(todo: Todo): Observable<Todo> {
+    return this.http.put<Todo>(`${environment.API_BASE}${TODO_ENDPOINT}`, todo);
+  }
 }
